@@ -21,7 +21,6 @@ class ListNode {
     }
 
 
-    // Метод для виведення списку у вигляді рядка з дужками
     @Override
     public String toString() {
         if (this.isEmpty) {

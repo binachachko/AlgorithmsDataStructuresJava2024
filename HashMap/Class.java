@@ -1,11 +1,11 @@
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 class Class {
-    private String classCode;
-    private String subjectName;
-    private LocalTime time;
+    private final String classCode;
+    private final String subjectName;
+    private final LocalDateTime time;
 
-    public Class(String classCode, String subjectName, LocalTime time) {
+    public Class(String classCode, String subjectName, LocalDateTime time) {
         this.classCode = classCode;
         this.subjectName = subjectName;
         this.time = time;
@@ -19,7 +19,7 @@ class Class {
         return subjectName;
     }
 
-    public LocalTime getTime() {
+    public LocalDateTime getTime() {
         return time;
     }
 

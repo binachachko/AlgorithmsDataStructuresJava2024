@@ -7,34 +7,39 @@ public class Schedule {
     private static final int END_HOUR = 17;
     private final HashMap<String, Class> classCodeAndClass = new HashMap<>();
 
-    public void addClass(String classCode, String subjectName, LocalDateTime time) {
+    public Class addClass(String classCode, String subjectName, LocalDateTime time) {
         if (time.getDayOfWeek() == DayOfWeek.SUNDAY){
             System.out.println("We have a day of on Sunday!");
-            return;
+            return null;
         }
 
 
         int hour = time.getHour();
         if (hour < START_HOUR || hour > END_HOUR) {
             System.out.println("Class time must be between 08:00 and 17:00. Invalid time: " + time.getHour() + ":" + time.getMinute());
-            return;
+            return null;
         }
 
         if (classCodeAndClass.containsKey(classCode)) {
             System.out.println("Class with code " + classCode + " already exists.");
-            return;
+            return null;
         }
 
         Class newClass = new Class(classCode, subjectName, time);
         classCodeAndClass.put(classCode, newClass);
+        return newClass;
     }
 
-    public void removeClass(String classCode) {
-        classCodeAndClass.remove(classCode);
+    public boolean removeClass(String classCode) {
+        if (classCodeAndClass.containsKey(classCode)) {
+            classCodeAndClass.remove(classCode);
+            return true;
+        }
+        return false;
     }
 
-    public void getClass(String classCode) {
-        System.out.println(classCodeAndClass.get(classCode));
+    public Class getClass(String classCode) {
+        return classCodeAndClass.get(classCode);
     }
 
     public void printAllClasses() {
